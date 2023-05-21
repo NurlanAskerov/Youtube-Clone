@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { ChannelCard, Videos } from "./";
 import { useParams } from "react-router-dom";
@@ -30,8 +30,8 @@ const ChannelDetail = () => {
           height: "200px",
         }}
       ></Box>
-      <Box sx={{ display: "flex", justifyContent: "between" }}>
-        {" "}
+      <Stack  direction={{ xs: "column", md: "row" }}>
+        
         <ChannelCard channelDetail={channelDetail} />
         <Typography
           variant="h6"
@@ -40,14 +40,15 @@ const ChannelDetail = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            p:'5%'
           }}
         >
           {channelDetail?.snippet?.description.length > 200
             ? channelDetail?.snippet?.description.slice(0, 200) + "..."
             : channelDetail?.snippet?.description}
-        </Typography>{" "}
+        </Typography>
         <Box sx={{ mr: { sm: "100px" } }} />
-      </Box>
+      </Stack>
       <Box p={2} display="flex">
         <Videos videos={videos} justifyContent={"center"} />
       </Box>
